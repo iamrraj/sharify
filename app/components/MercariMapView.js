@@ -25,7 +25,7 @@ export default class MercariMapView extends Component {
         this.setState({
           latitude,
           longitude,
-          accuracy: position.coords.accuracy + 100
+          accuracy: position.coords.accuracy
         });
       },
       error => console.log(error),
