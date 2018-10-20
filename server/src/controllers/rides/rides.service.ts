@@ -14,6 +14,8 @@ export class RidesService {
 
   async create(createPlaceDto: RideDto): Promise<RideInterface> {
     const addedRide = new this.rideModel(createPlaceDto);
+    addedRide.ride_id = 0;
+    addedRide.timestamp = new Date().getTime();
     // TODO check if place like this already exists
     return await addedRide.save();
   }

@@ -5,7 +5,7 @@ export class RideDto {
 
   readonly to: Place;
 
-  readonly exhibitorSession: string;
+  readonly exhibitor: string;
   readonly cost: number;
   readonly currency: string;
 }
