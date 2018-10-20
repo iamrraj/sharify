@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Headers } from '@nestjs/common';
 import { AddUserLocationDto } from './dto/add-user-location.dto';
 import { UsersService } from '../users.service';
-import { Position } from './position.class';
+import { UserPosition } from './users.position.class';
 
 @Controller('api/v1/users/location')
 export class AddUserLocationController {
@@ -18,15 +18,15 @@ export class AddUserLocationController {
     );
 
     if (user === null) {
-      return { error: true, code: 301 };
+      return { error: true, code: 131 };
     }
 
-    const position: Position = new Position(
+    const position: UserPosition = new UserPosition(
       addUserLocationDto.latitude,
       addUserLocationDto.longitude,
     );
 
-    const newPositions: Array<Position> = [...user.positions, position];
+    const newPositions: Array<UserPosition> = [...user.positions, position];
 
     await this.addUserLocationService.updateUsersPositions(
       user.session,

@@ -1,9 +1,9 @@
 import { Place } from '../../places/place.class';
 
 export class CreateRideDto {
-  readonly from: Place;
+  readonly origin: Place;
 
-  readonly to: Place;
+  readonly destination: Place;
 
   readonly cost: number;
   readonly currency: string;

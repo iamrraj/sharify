@@ -13,7 +13,7 @@ export class IdentifyUserController {
     );
 
     if (user === null) {
-      return { error: true, code: 401 };
+      return { error: true, code: 121 };
     }
     return { error: false, result: { name: user.name, email: user.email } };
   }

@@ -5,8 +5,9 @@ import { UserInterface } from './user.interface';
 import { CreateUserDto } from './create/dto/create.user.dto';
 import { USER_MODEL_PROVIDER } from '../../constants';
 
-import { Position } from './location/position.class';
+import { UserPosition } from './location/users.position.class';
 import { Place } from '../places/place.class';
+import { RideInterface } from 'controllers/rides/ride.interface';
 
 @Injectable()
 export class UsersService {
@@ -44,7 +45,7 @@ export class UsersService {
 
   async updateUsersPositions(
     userSession: string,
-    locations: Array<Position>,
+    locations: Array<UserPosition>,
   ): Promise<void> {
     await this.userModel.findOneAndUpdate(
       { session: userSession },
@@ -54,16 +55,18 @@ export class UsersService {
     );
   }
 
-  async updateUsersMissedPlaces(
+  async updateUsersRides(
     userSession: string,
-    places: Array<Place>,
+    rides: Array<RideInterface>,
   ): Promise<void> {
     await this.userModel.findOneAndUpdate(
       {
-        session: this.userModel,
+        session: userSession,
       },
       {
-        $set: { missedPlaces: places },
+        $set: {
+          rides: rides,
+        },
       },
     );
   }

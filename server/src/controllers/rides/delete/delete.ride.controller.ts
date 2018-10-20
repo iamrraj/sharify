@@ -7,6 +7,7 @@ import { DeleteRideDto } from './delete.ride.dto';
 import { UserInterface } from '../../users/user.interface';
 import { UsersService } from '../../users/users.service';
 import { Ride } from '../ride.class';
+import { RideInterface } from '../ride.interface';
 
 @Controller('api/v1/rides/delete')
 export class DeleteRidesController {
@@ -31,7 +32,7 @@ export class DeleteRidesController {
       return { error: true, code: 211 };
     }
 
-    const userRides: Array<Ride> = user.rides;
+    const userRides: Array<RideInterface> = user.rides;
 
     const userRidesId: number[] = userRides.map(ride => ride.ride_id);
 

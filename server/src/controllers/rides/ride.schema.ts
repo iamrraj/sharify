@@ -9,16 +9,16 @@ export const RideSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  from: {
+  origin: {
     type: Object,
     required: true,
   },
-  to: {
+  destination: {
     type: Object,
     required: true,
   },
-  exhibitor: {
-    type: Object,
+  exhibitorsMail: {
+    type: String,
     required: true,
   },
   passengers: {

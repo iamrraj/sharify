@@ -14,7 +14,7 @@ export class CreateUsersController {
       await this.usersService.create(createUserDto);
     } catch (error) {
       console.log(error);
-      return { error: true, code: 201 };
+      return { error: true, code: 111 };
     }
     let session = SHA256(randomstring.generate()).toString('hex');
     await this.usersService.updateUsersSession(createUserDto.email, session);

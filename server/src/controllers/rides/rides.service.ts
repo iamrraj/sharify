@@ -5,8 +5,6 @@ import { RideInterface } from './ride.interface';
 import { CreateRideDto } from './create/create.ride.dto';
 import { RIDES_MODEL_PROVIDER } from '../../constants';
 
-import { User } from '../users/user.class';
-
 @Injectable()
 export class RidesService {
   constructor(
@@ -16,9 +14,9 @@ export class RidesService {
 
   async create(
     createRideDto: CreateRideDto,
-    exhibitor: User,
+    exhibitorsMail: string,
     when: Date,
-  ): Promise<number> {
+  ): Promise<RideInterface> {
     const addedRide = new this.rideModel(createRideDto);
 
     const lastRide: RideInterface[] = await this.rideModel
@@ -33,10 +31,10 @@ export class RidesService {
     }
 
     addedRide.addedOn = new Date().getTime();
-    addedRide.exhibitor = exhibitor;
+    addedRide.exhibitorsMail = exhibitorsMail;
     addedRide.when = when;
     await addedRide.save();
-    return addedRide.ride_id;
+    return addedRide;
   }
 
   async getAll(): Promise<RideInterface[]> {
