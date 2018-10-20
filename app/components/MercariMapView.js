@@ -9,14 +9,10 @@ export default class MercariMapView extends Component {
     this.state = {
       latitude: 0,
       longitude: 0,
-      prevLatLng: {},
-      coordinate: new MapView.AnimatedRegion({
-        latitude: 0,
-        longitude: 0
-      })
+      accuracy: 0
     };
   }
-  componentDidMount() {
+  componentWillMount() {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         latitude: position.coords.latitude,
@@ -25,27 +21,11 @@ export default class MercariMapView extends Component {
     });
     this.watchID = navigator.geolocation.watchPosition(
       position => {
-        const { coordinate } = this.state;
         const { latitude, longitude } = position.coords;
-
-        const newCoordinate = {
-          latitude,
-          longitude
-        };
-        if (Platform.OS === "android") {
-          if (this.marker) {
-            this.marker._component.animateMarkerToCoordinate(
-              newCoordinate,
-              500
-            );
-          }
-        } else {
-          coordinate.timing(newCoordinate).start();
-        }
         this.setState({
           latitude,
           longitude,
-          prevLatLng: newCoordinate
+          accuracy: position.coords.accuracy + 100
         });
       },
       error => console.log(error),
@@ -71,11 +51,22 @@ export default class MercariMapView extends Component {
           region={this.getMapRegion()}
           provider={PROVIDER_GOOGLE}
         >
-          <MapView.Marker.Animated
-            ref={marker => {
-              this.marker = marker;
+          <MapView.Marker
+            image={require("../resources/currentLocationMarker.png")}
+            coordinate={{
+              latitude: this.state.latitude,
+              longitude: this.state.longitude
             }}
-            coordinate={this.state.coordinate}
+            anchor={{ x: 0.5, y: 0.5 }}
+          />
+          <MapView.Circle
+            center={{
+              latitude: this.state.latitude,
+              longitude: this.state.longitude
+            }}
+            strokeColor={"rgba(0,0,0,0)"}
+            fillColor={"rgba(0, 80, 150, 0.1)"}
+            radius={this.state.accuracy}
           />
         </MapView>
       </View>
@@ -87,7 +78,8 @@ const styles = StyleSheet.create({
   map: {
     display: "flex",
     width: "100%",
-    height: "100%"
+    height: "110%",
+    marginTop: "-5%"
   }
 });
 
