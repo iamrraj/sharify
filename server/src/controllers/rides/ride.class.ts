@@ -2,7 +2,7 @@ import { Place } from '../places/place.class';
 import { User } from '../users/user.class';
 
 export class Ride {
-  ride_id: Number;
+  ride_id: number;
   timestamp: Number;
   from: Place;
   to: Place;

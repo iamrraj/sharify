@@ -2,7 +2,7 @@ import { Document } from 'mongoose';
 import { Position } from './location/position.class';
 import { Ride } from '../rides/ride.class';
 
-export interface User extends Document {
+export interface UserInterface extends Document {
   readonly name: string;
   readonly email: string;
   readonly password: string;

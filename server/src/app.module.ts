@@ -8,7 +8,8 @@ import { AddUserLocationModule } from './controllers/users/location/location.use
 import { IdentifyUsersModule } from './controllers/users/identify/identify.users.module';
 
 import { PlacesModule } from './controllers/places/places.module';
-import { RidesModule } from './controllers/rides/rides.module';
+import { CreateRidesModule } from './controllers/rides/create/create.ride.module';
+import { DeleteRidesModule } from './controllers/rides/delete/delete.ride.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { RidesModule } from './controllers/rides/rides.module';
     AddUserLocationModule,
     PlacesModule,
     IdentifyUsersModule,
-    RidesModule,
+    CreateRidesModule,
+    DeleteRidesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

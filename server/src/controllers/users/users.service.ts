@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { Inject, Injectable } from '@nestjs/common';
 
-import { User } from './user.interface';
+import { UserInterface } from './user.interface';
 import { CreateUserDto } from './create/dto/create.user.dto';
 import { USER_MODEL_PROVIDER } from '../../constants';
 
@@ -11,10 +11,11 @@ import { Place } from '../places/place.class';
 @Injectable()
 export class UsersService {
   constructor(
-    @Inject(USER_MODEL_PROVIDER) private readonly userModel: Model<User>,
+    @Inject(USER_MODEL_PROVIDER)
+    private readonly userModel: Model<UserInterface>,
   ) {}
 
-  async create(createUserDto: CreateUserDto): Promise<User> {
+  async create(createUserDto: CreateUserDto): Promise<UserInterface> {
     const createdUser = new this.userModel(createUserDto);
     const alreadyExistingUser = await this.getUserByEmail(createUserDto.email);
 
@@ -24,11 +25,11 @@ export class UsersService {
 
     return await createdUser.save();
   }
-  async getUserByEmail(email: string): Promise<User> {
+  async getUserByEmail(email: string): Promise<UserInterface> {
     return await this.userModel.findOne({ email });
   }
 
-  async getUserBySession(session: string): Promise<User> {
+  async getUserBySession(session: string): Promise<UserInterface> {
     return await this.userModel.findOne({ session });
   }
 

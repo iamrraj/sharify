@@ -11,5 +11,6 @@ export interface RideInterface extends Document {
   readonly duration: number;
   readonly cost: number;
   readonly currency: string;
-  readonly timestamp: number;
+  readonly addedOn: number;
+  readonly when: Date;
 }

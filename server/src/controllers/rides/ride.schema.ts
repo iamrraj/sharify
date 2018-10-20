@@ -5,7 +5,7 @@ export const RideSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  timestamp: {
+  addedOn: {
     type: Number,
     required: true,
   },
@@ -39,6 +39,10 @@ export const RideSchema = new mongoose.Schema({
   },
   currency: {
     type: String,
+    required: true,
+  },
+  when: {
+    type: Date,
     required: true,
   },
 });

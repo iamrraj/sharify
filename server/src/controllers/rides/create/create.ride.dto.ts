@@ -1,11 +1,12 @@
-import { Place } from '../places/place.class';
+import { Place } from '../../places/place.class';
 
-export class RideDto {
+export class CreateRideDto {
   readonly from: Place;
 
   readonly to: Place;
 
-  readonly exhibitor: string;
   readonly cost: number;
   readonly currency: string;
+
+  readonly when: string;
 }
