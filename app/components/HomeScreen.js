@@ -8,13 +8,16 @@
 
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
+import { Icon } from "react-native-elements";
 import MercariMapView from "./MercariMapView";
+import OpenDrawer from "./OpenDrawer";
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
         <MercariMapView />
+        <OpenDrawer />
       </View>
     );
   }

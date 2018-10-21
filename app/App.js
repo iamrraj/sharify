@@ -7,11 +7,29 @@
  */
 
 import React, { Component } from "react";
-import { DrawerNavigator } from "react-navigation";
+import {
+  DrawerNavigator,
+  StackNavigator,
+  SwitchNavigator
+} from "react-navigation";
 import HomeScreen from "./components/HomeScreen";
 
-export default DrawerNavigator({
+const MyApp = new DrawerNavigator({
   Home: {
+    screen: HomeScreen
+  },
+  Home2: {
+    screen: HomeScreen
+  },
+  Home3: {
     screen: HomeScreen
   }
 });
+
+const AppNavigator = new SwitchNavigator({
+  App: {
+    screen: MyApp
+  }
+});
+
+export default AppNavigator;
