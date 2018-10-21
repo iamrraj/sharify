@@ -32,10 +32,10 @@ export class JoinRideController {
       return { error: true, code: 252 };
     }
 
-    ride.passengers.push(user);
+    ride.passengers.push(user.email);
 
     for (let i: number = 0; i < joinRideDto.seats - 1; i++) {
-      ride.passengers.push(null); // Adding anonymous passanger
+      ride.passengers.push(user.email + '-guest');
     }
 
     await this.rideService.updateRideById(joinRideDto.rideId, ride);

@@ -7,7 +7,7 @@ export interface RideInterface extends Document {
   readonly origin: Place;
   readonly destination: Place;
   readonly exhibitorsMail: string;
-  readonly passengers: Array<User>;
+  readonly passengers: Array<string>;
   readonly duration: number;
   readonly cost: number;
   readonly currency: string;
