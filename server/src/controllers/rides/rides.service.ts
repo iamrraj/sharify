@@ -5,6 +5,8 @@ import { RideInterface } from './ride.interface';
 import { CreateRideDto } from './create/create.ride.dto';
 import { RIDES_MODEL_PROVIDER } from '../../constants';
 
+import { ISODate } from 'mongoose';
+
 @Injectable()
 export class RidesService {
   constructor(
@@ -41,7 +43,34 @@ export class RidesService {
     return await this.rideModel.find().exec();
   }
 
+  async getRideById(_id: number) {
+    return await this.rideModel.findOne({ ride_id: _id });
+  }
+
   async removeById(_id: number) {
     await this.rideModel.findOneAndRemove({ ride_id: _id });
+  }
+
+  async updateRideById(_id: number, updatedRide: RideInterface): Promise<void> {
+    await this.rideModel.findOneAndUpdate(
+      { ride_id: _id },
+      {
+        $set: updatedRide,
+      },
+    );
+  }
+
+  async getRidesByCountryCityTimeAndSeats(
+    country: string,
+    city: string,
+    when: Date,
+    seats: number,
+  ): Promise<RideInterface[]> {
+    return await this.rideModel.find({
+      country: country,
+      city: city,
+      when: { $gte: new ISODate(when.toISOString) },
+      passengers: { $size: { $gt: seats } },
+    });
   }
 }

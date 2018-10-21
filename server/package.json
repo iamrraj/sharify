@@ -22,8 +22,12 @@
   "dependencies": {
     "@nestjs/common": "^5.1.0",
     "@nestjs/core": "^5.1.0",
+    "geocoder": "^0.2.3",
+    "haversine": "^1.1.0",
+    "moment": "^2.22.2",
     "mongoose": "^5.3.3",
     "mongoose-sequence": "^4.0.1",
+    "node-fetch": "^2.2.0",
     "randomstring": "^1.1.5",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.2.2",

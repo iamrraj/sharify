@@ -45,4 +45,14 @@ export const RideSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  country: {
+    type: String,
+    required: true,
+    default: 'Poland',
+  },
+  city: {
+    type: String,
+    required: true,
+    default: 'Warsaw',
+  },
 });

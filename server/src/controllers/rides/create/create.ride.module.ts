@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CreateRidesController } from './create.ride.controller';
 import { RidesService } from '../rides.service';
+
 import { ridesProviders } from '../rides.providers';
 import { DatabaseModule } from '../../../database/database.module';
 

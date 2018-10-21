@@ -5,8 +5,11 @@ export class SearchRideDto {
   readonly destination: Place;
   readonly tolerationRadiusMeters: number;
 
-  readonly when: Date;
+  readonly when: string;
   readonly timeToleranceMinutes: number;
 
-  readonly places: number;
+  readonly seats: number;
+
+  readonly country: string;
+  readonly city: string;
 }

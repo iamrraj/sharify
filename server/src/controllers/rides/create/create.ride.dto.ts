@@ -9,4 +9,6 @@ export class CreateRideDto {
   readonly currency: string;
 
   readonly when: string;
+  readonly country: string;
+  readonly city: string;
 }

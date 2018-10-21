@@ -13,4 +13,6 @@ export interface RideInterface extends Document {
   readonly currency: string;
   readonly addedOn: number;
   readonly when: Date;
+  readonly country: string;
+  readonly city: string;
 }
