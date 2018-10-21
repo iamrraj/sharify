@@ -15,8 +15,11 @@ import {
 import HomeScreen from "./components/HomeScreen";
 import AddRideScreen from "./components/AddRideScreen";
 import ViewRidesScreen from "./components/ViewRidesScreen";
+import LoginScreen from "./components/LoginScreen";
+import RegisterScreen from "./components/RegisterScreen";
+import AuthLoadingScreen from "./components/AuthLoadingScreen";
 
-const MyApp = new DrawerNavigator({
+const AppDrawer = new DrawerNavigator({
   Home: {
     screen: HomeScreen
   },
@@ -28,10 +31,20 @@ const MyApp = new DrawerNavigator({
   }
 });
 
-const AppNavigator = new SwitchNavigator({
-  App: {
-    screen: MyApp
-  }
-});
+const AuthStack = new StackNavigator(
+  { Login: LoginScreen, Register: RegisterScreen },
+  { initialRouteName: "Register" }
+);
 
-export default AppNavigator;
+const Navigator = new SwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    App: AppDrawer,
+    Auth: AuthStack
+  },
+  {
+    initialRouteName: "AuthLoading"
+  }
+);
+
+export default Navigator;
