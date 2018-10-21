@@ -5,8 +5,6 @@ import { RideInterface } from './ride.interface';
 import { CreateRideDto } from './create/create.ride.dto';
 import { RIDES_MODEL_PROVIDER } from '../../constants';
 
-import { ISODate } from 'mongoose';
-
 @Injectable()
 export class RidesService {
   constructor(
