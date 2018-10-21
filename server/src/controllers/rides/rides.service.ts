@@ -69,8 +69,8 @@ export class RidesService {
     return await this.rideModel.find({
       country: country,
       city: city,
-      when: { $gte: new ISODate(when.toISOString) },
-      passengers: { $size: { $gt: seats } },
+      when: { $gte: new Date(when) },
+      $where: '4 - this.passengers.length >= ' + seats,
     });
   }
 }

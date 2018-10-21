@@ -48,9 +48,12 @@ export class SearchRidesController {
       searchRideDto.seats,
     );
 
-    let matchingRides: RideInterface[];
+    if (selectedRides.length === 0) {
+      return { error: true, code: 243 };
+    }
+    let matchingRides: RideInterface[] = [];
 
-    for (let i: number; i < selectedRides.length; i++) {
+    for (let i: number = 0; i < selectedRides.length; i++) {
       if (
         GeographicToolkit.isPointInCircle(
           new Position(
@@ -79,8 +82,8 @@ export class SearchRidesController {
       }
     }
 
-    if (matchingRides === []) {
-      return { error: true, code: 243 };
+    if (matchingRides.length === 0) {
+      return { error: true, code: 244 };
     }
 
     return { error: false, result: matchingRides };

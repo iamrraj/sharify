@@ -1,4 +1,4 @@
-import { Controller, Delete, Param, Body, Headers } from '@nestjs/common';
+import { Controller, Delete, Body, Headers } from '@nestjs/common';
 
 import { RidesService } from '../rides.service';
 
