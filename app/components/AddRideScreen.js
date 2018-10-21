@@ -7,20 +7,16 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
-import { Icon } from "react-native-elements";
-import MercariMapView from "./MercariMapView";
-import OpenDrawer from "./OpenDrawer";
+import { StyleSheet, View, Text } from "react-native";
 
-export default class App extends Component {
+export default class AddRideScreen extends Component {
   static navigationOptions = {
-    drawerLabel: () => null
+    drawerLabel: "Add ride"
   };
   render() {
     return (
       <View style={styles.container}>
-        <MercariMapView />
-        <OpenDrawer />
+        <Text>Add ride</Text>
       </View>
     );
   }
@@ -29,8 +25,10 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#000"
+    backgroundColor: "#fff"
   }
 });

@@ -13,16 +13,18 @@ import {
   SwitchNavigator
 } from "react-navigation";
 import HomeScreen from "./components/HomeScreen";
+import AddRideScreen from "./components/AddRideScreen";
+import ViewRidesScreen from "./components/ViewRidesScreen";
 
 const MyApp = new DrawerNavigator({
   Home: {
     screen: HomeScreen
   },
-  Home2: {
-    screen: HomeScreen
+  AddRide: {
+    screen: AddRideScreen
   },
-  Home3: {
-    screen: HomeScreen
+  ViewRides: {
+    screen: ViewRidesScreen
   }
 });
 
