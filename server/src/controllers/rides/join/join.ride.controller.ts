@@ -32,6 +32,10 @@ export class JoinRideController {
       return { error: true, code: 252 };
     }
 
+    if (ride.passengers.indexOf(user.email) > -1) {
+      return { error: true, code: 253 };
+    }
+
     ride.passengers.push(user.email);
 
     for (let i: number = 0; i < joinRideDto.seats - 1; i++) {

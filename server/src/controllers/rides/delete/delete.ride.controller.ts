@@ -37,7 +37,7 @@ export class DeleteRidesController {
     const userRidesId: number[] = userRides.map(ride => ride.ride_id);
 
     for (let i: number; i < ids.length; i++) {
-      if (!(userRidesId.indexOf(ids[i]) > -1)) {
+      if (userRidesId.indexOf(ids[i]) < -1) {
         return { error: true, code: 212 };
       }
     }
